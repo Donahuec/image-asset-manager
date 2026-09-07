@@ -30,8 +30,10 @@ button {
   color: var(--nord6);
   border: none;
   padding: 0.5rem;
+  padding-inline: 1rem;
   border-radius: 4px;
   font-size: 1rem;
+  will-change: transform;
   transition:
     transform 250ms,
     opacity 250ms;
@@ -45,4 +47,10 @@ button:hover {
 button:active {
   transform: scale(0.95);
   opacity: 0.9;
+}
+
+button:focus-visible {
+  transform: scale(1.05);
+  outline: 2px solid var(--nord7);
+  outline-offset: 4px;
 }
