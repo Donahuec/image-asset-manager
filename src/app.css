@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --color-background: var(--nord0);
+  --color-text: var(--nord4);
+  --color-surface: var(--nord1);
+}
+
+body,
+html {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: Roboto, sans-serif;
+  font-optical-sizing: auto;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 400;
+}
+
+button {
+  background-color: var(--nord10);
+  color: var(--nord6);
+  border: none;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition:
+    transform 250ms,
+    opacity 250ms;
+}
+
+button:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+button:active {
+  transform: scale(0.95);
+  opacity: 0.9;
+}

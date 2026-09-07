@@ -1,0 +1,26 @@
+{
+  "flowerBasin": {
+    "fileName": "flowerBasin",
+    "formats": "jpeg",
+    "alt": "Pink flowers in a stone basin of water",
+    "title": "Flowers in Temple Basin",
+    "description": "Pink flowers floating in a stone basin. This was taken at a temple in Japan.",
+    "location": "Japan",
+    "date": "2026"
+  },
+  "flowers": {
+    "fileName": "flowers",
+    "formats": "jpeg",
+    "alt": "Cherry blossoms in front of a Japanese temple",
+    "title": "Flowers in Front of a Temple",
+    "description": "A picture of cherry blossoms starting to bloom, in front of a temple in Japan.",
+    "location": "Japan",
+    "date": "2026"
+  },
+  "inari": {
+    "fileName": "inari",
+    "formats": ["jpeg"],
+    "alt": "asdsad",
+    "title": "adas"
+  }
+}
