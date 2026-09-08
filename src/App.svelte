@@ -37,10 +37,6 @@
     }
   }
 
-  function onUpdate(key: string, updatedMeta: ImageDataCls) {
-    imageMeta.set(key, updatedMeta);
-  }
-
   async function saveFile() {
     const newHandle = await window.showSaveFilePicker();
     const writableStream = await newHandle.createWritable();
@@ -92,14 +88,14 @@
   </section>
 
   {#if images}
-    <section class="selected-files" transition:fade={{ duration: 400 }}>
+    <section class="selected-files" transition:slide={{ duration: 300 }}>
       <div class="file-title">
         <h2>Selected Files</h2>
         <button onclick={saveFile}>Save Metadata</button>
       </div>
       <ul class="images">
         {#each images.entries() as [key, value]}
-          <li>
+          <li transition:fade|global>
             <ImageEntry name={key} files={value} bind:meta={imageMeta}
             ></ImageEntry>
           </li>
@@ -109,10 +105,10 @@
   {/if}
 
   {#if imageMeta.size > 0}
-    <section class="metadata-preview">
+    <section class="metadata-preview" transition:slide>
       <h2>Current Output</h2>
       {#each imageMeta as [key, value]}
-        <article>
+        <article transition:slide|global>
           <h3 class="preview-entry-title">{key}</h3>
           <dl class="metadata-list">
             {#if value.title}
@@ -131,7 +127,7 @@
               <dt>Location</dt>
               <dd>{value.location}</dd>
             {/if}
-            {#if value.Date}
+            {#if value.date}
               <dt>Date</dt>
               <dd>{value.date}</dd>
             {/if}
@@ -174,6 +170,7 @@
     grid-auto-rows: 250px;
     gap: 1rem;
     padding-block: 0.5rem;
+    min-height: 250px;
   }
   .file-title {
     display: flex;
@@ -236,7 +233,18 @@
     outline: 2px solid var(--nord7);
     outline-offset: 4px;
   }
-
+  .metadata-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-block: 2rem;
+    h2 {
+      margin: 0;
+    }
+    article {
+      margin-inline: 1rem;
+    }
+  }
   .preview-entry-title {
     font-size: 1.25em;
     text-transform: capitalize;
@@ -246,7 +254,6 @@
   }
 
   dl.metadata-list {
-    margin-bottom: 2rem;
     margin-top: 0.25rem;
     padding: 1rem;
     border: 2px dashed var(--nord10);
