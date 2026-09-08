@@ -113,30 +113,37 @@
       <h2>Current Output</h2>
       {#each imageMeta as [key, value]}
         <article>
-          <h3>{key}</h3>
-          <ul>
+          <h3 class="preview-entry-title">{key}</h3>
+          <dl class="metadata-list">
             {#if value.title}
-              <li>Title: {value.title}</li>
+              <dt>Title</dt>
+              <dd>{value.title}</dd>
             {/if}
             {#if value.description}
-              <li>Description: {value.description}</li>
+              <dt>Description</dt>
+              <dd>{value.description}</dd>
             {/if}
             {#if value.alt}
-              <li>Alt Text: {value.alt}</li>
+              <dt>Alt Text</dt>
+              <dd>{value.alt}</dd>
             {/if}
             {#if value.location}
-              <li>Location: {value.location}</li>
+              <dt>Location</dt>
+              <dd>{value.location}</dd>
             {/if}
             {#if value.Date}
-              <li>Date: {value.date}</li>
+              <dt>Date</dt>
+              <dd>{value.date}</dd>
             {/if}
             {#if value.Credit}
-              <li>Credit: {value.credit}</li>
+              <dt>Credit</dt>
+              <dd>{value.credit}</dd>
             {/if}
             {#if value.formats}
-              <li>Formats: {value.formats}</li>
+              <dt>Formats</dt>
+              <dd>{value.formats.join(', ')}</dd>
             {/if}
-          </ul>
+          </dl>
         </article>
       {/each}
     </section>
@@ -228,5 +235,34 @@
     transform: scale(1.05);
     outline: 2px solid var(--nord7);
     outline-offset: 4px;
+  }
+
+  .preview-entry-title {
+    font-size: 1.25em;
+    text-transform: capitalize;
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+  }
+
+  dl.metadata-list {
+    margin-bottom: 2rem;
+    margin-top: 0.25rem;
+    padding: 1rem;
+    border: 2px dashed var(--nord10);
+    border-radius: 4px;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: 1rem;
+    row-gap: 0.5rem;
+    dt {
+      font-weight: 600;
+      text-align: right;
+      color: var(--nord8);
+    }
+    dd {
+      padding: 0;
+      margin: 0;
+    }
   }
 </style>
