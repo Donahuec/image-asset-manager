@@ -154,7 +154,7 @@
               }}
             />
             <div class="input-section" transition:slide>
-              <p>File Formats:</p>
+              <p class="formats-label">File Formats:</p>
               <FileFormatSelection
                 {fileFormats}
                 bind:selectedFormats
@@ -195,7 +195,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: hsla(0, 0%, 0%, 0.75);
+    background-color: var(--color-backdrop);
   }
 
   .modal {
@@ -204,28 +204,18 @@
     width: 70vw;
     min-height: 46vh;
     max-height: 90vh;
-    padding: 64px 32px;
-    border-radius: 4px;
+    padding: var(--spacing-xlarge-px) var(--spacing-large-px);
+    border-radius: var(--border-radius);
     border-top-left-radius: 0;
-    border: 1px solid var(--color-surface);
-
-    --shadow-color: 0deg 0% 0%;
-    box-shadow:
-      0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
-      1.5px 2.9px 3.7px -0.4px hsl(var(--shadow-color) / 0.34),
-      2.7px 5.4px 6.8px -0.7px hsl(var(--shadow-color) / 0.34),
-      4.5px 8.9px 11.2px -1.1px hsl(var(--shadow-color) / 0.34),
-      7.1px 14.3px 18px -1.4px hsl(var(--shadow-color) / 0.34),
-      11.2px 22.3px 28.1px -1.8px hsl(var(--shadow-color) / 0.34),
-      17px 33.9px 42.7px -2.1px hsl(var(--shadow-color) / 0.34),
-      25px 50px 62.9px -2.5px hsl(var(--shadow-color) / 0.34);
+    border: var(--modal-border);
+    box-shadow: var(--box-shadow-high);
   }
 
   .modal-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
-    gap: 32px;
+    gap: var(--spacing-large-px);
     place-content: center;
     align-items: start;
   }
@@ -234,25 +224,26 @@
     position: absolute;
     top: 0;
     right: 0;
-    transform: translateY(calc(-100% - 0.5rem));
+    transform: translateY(calc(-100% - var(--spacing-small-rem)));
   }
 
   .edit-header {
+    box-sizing: border-box;
     position: absolute;
     top: 0;
     left: -1px;
     transform: translateY(-100%);
     margin: 0;
-    padding: 1rem;
+    padding: var(--spacing-medium-rem);
     line-height: 1;
     background-color: var(--color-background);
-    min-width: 150px;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    min-width: var(--element-size);
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
     text-align: center;
-    border-top: 1px solid var(--color-surface);
-    border-left: 1px solid var(--color-surface);
-    border-right: 1px solid var(--color-surface);
+    border-top: var(--modal-border);
+    border-left: var(--modal-border);
+    border-right: var(--modal-border);
     text-transform: capitalize;
   }
 
@@ -265,42 +256,42 @@
     max-width: 100%;
     max-height: 40vh;
     image-orientation: from-image;
-    border-radius: 4px;
-    --shadow-color: 0deg 0% 0%;
-    box-shadow:
-      0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.13),
-      0.5px 1px 1.3px -1px hsl(var(--shadow-color) / 0.15),
-      1.3px 2.5px 3.4px -2px hsl(var(--shadow-color) / 0.17);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow-low);
   }
 
   .edit {
     display: grid;
     grid-template-columns: max-content 1fr;
     align-content: start;
-    gap: 1rem;
+    gap: var(--spacing-medium-rem);
     width: 100%;
   }
 
   .input-section {
     display: grid;
     grid-template-columns: subgrid;
-    align-items: baseline;
+    align-items: center;
     grid-column: span 2;
     text-align: right;
+  }
+
+  .formats-label {
+    font-weight: var(--font-weight-bold);
   }
 
   .initialize-meta {
     margin-inline: auto;
     width: 80%;
     grid-column: span 2;
-    padding: 1rem;
+    padding: var(--spacing-medium-rem);
     font-size: 1.25em;
   }
 
   .all-image-formats {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: var(--spacing-small-px);
     margin-top: auto;
   }
 
@@ -311,11 +302,7 @@
     height: 100%;
     display: block;
     position: absolute;
-    background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.9) 0%,
-      rgba(0, 0, 0, 0) 60%
-    );
+    background: var(--text-backdrop-gradient);
   }
 
   .format-thumbnail {
@@ -335,7 +322,7 @@
 
   .format-thumbnail-caption {
     position: absolute;
-    bottom: 0.25rem;
+    bottom: var(--spacing-xsmall-rem);
     left: 0;
     right: 0;
     text-align: center;
@@ -343,22 +330,19 @@
   }
 
   .format-button {
+    --max-height: 100px;
     padding: 0;
-    max-height: 100px;
-    max-width: 100px;
-    border-radius: 4px;
+    max-height: var(--max-height);
+    max-width: var(--max-height);
+    border-radius: var(--border-radius);
     overflow: hidden;
-    --shadow-color: 0deg 0% 0%;
-    box-shadow:
-      0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.13),
-      0.5px 1px 1.3px -1px hsl(var(--shadow-color) / 0.15),
-      1.3px 2.5px 3.4px -2px hsl(var(--shadow-color) / 0.17);
+    box-shadow: var(--box-shadow-low);
   }
 
   .img-column {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: var(--spacing-medium-rem);
     align-items: center;
     height: 100%;
   }

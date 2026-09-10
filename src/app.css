@@ -3,17 +3,93 @@
 :root {
   --color-background: var(--nord0);
   --color-text: var(--nord4);
+  --color-text-bright: var(--nord6);
   --color-surface: var(--nord1);
+  --color-accent-element: var(--nord10);
+  --color-accent-text: var(--nord8);
+  --color-light-accent: var(--nord8);
+  --color-form-outline: var(--nord3);
+  --color-warning: var(--nord11);
+  --color-backdrop: hsla(0, 0%, 0%, 0.75);
+
+  --border-radius: 4px;
+  --outline-offset: 4px;
+  --focus-outline: 2px solid var(--color-light-accent);
+  --form-border: 1px solid var(--color-form-outline);
+  --modal-border: 1px solid var(--color-surface);
+
+  --spacing-xsmall: 4;
+  --spacing-small: 8;
+  --spacing-medium: 16;
+  --spacing-large: 32;
+  --spacing-xlarge: 48;
+  --spacing-max: 64;
+
+  --spacing-xsmall-rem: calc(calc(var(--spacing-xsmall) / 16) * 1rem);
+  --spacing-small-rem: calc(calc(var(--spacing-small) / 16) * 1rem);
+  --spacing-medium-rem: calc(calc(var(--spacing-medium) / 16) * 1rem);
+  --spacing-large-rem: calc(calc(var(--spacing-large) / 16) * 1rem);
+  --spacing-xlarge-rem: calc(calc(var(--spacing-xlarge) / 16) * 1rem);
+  --spacing-max-rem: calc(calc(var(--spacing-max) / 16) * 1rem);
+
+  --spacing-xsmall-px: calc(var(--spacing-xsmall) * 1px);
+  --spacing-small-px: calc(var(--spacing-small) * 1px);
+  --spacing-medium-px: calc(var(--spacing-medium) * 1px);
+  --spacing-large-px: calc(var(--spacing-large) * 1px);
+  --spacing-xlarge-px: calc(var(--spacing-xlarge) * 1px);
+  --spacing-max-px: calc(var(--spacing-max) * 1px);
+
+  --element-size: 250px;
+
+  --font-size-body: 1rem;
+  --font-weight-bold: 600;
+
+  --font-family-body: Roboto, sans-serif;
+  --line-height-body: 1.5;
+
+  --button-scale-up: 1.05;
+  --button-scale-down: 0.95;
+  --button-active-opacity: 0.9;
+
+  --border-decorative: 2px dashed var(--color-accent-element);
+
+  --animation-time: 250ms;
+
+  --shadow-color: 0deg 0% 0%;
+  --box-shadow-low:
+    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.13),
+    0.5px 1px 1.3px -1px hsl(var(--shadow-color) / 0.15),
+    1.3px 2.5px 3.4px -2px hsl(var(--shadow-color) / 0.17);
+  --box-shadow-medium:
+    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.13),
+    1.1px 2.1px 2.8px -0.7px hsl(var(--shadow-color) / 0.15),
+    2.6px 5.3px 7.1px -1.3px hsl(var(--shadow-color) / 0.16),
+    6.3px 12.5px 16.8px -2px hsl(var(--shadow-color) / 0.18);
+  --box-shadow-high:
+    0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.34),
+    1.5px 2.9px 3.7px -0.4px hsl(var(--shadow-color) / 0.34),
+    2.7px 5.4px 6.8px -0.7px hsl(var(--shadow-color) / 0.34),
+    4.5px 8.9px 11.2px -1.1px hsl(var(--shadow-color) / 0.34),
+    7.1px 14.3px 18px -1.4px hsl(var(--shadow-color) / 0.34),
+    11.2px 22.3px 28.1px -1.8px hsl(var(--shadow-color) / 0.34),
+    17px 33.9px 42.7px -2.1px hsl(var(--shadow-color) / 0.34),
+    25px 50px 62.9px -2.5px hsl(var(--shadow-color) / 0.34);
+
+  --text-backdrop-gradient: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0) 60%
+  );
 }
 
 body,
 html {
   background-color: var(--color-background);
   color: var(--color-text);
-  font-family: Roboto, sans-serif;
+  font-family: var(--font-family-body);
   font-optical-sizing: auto;
-  font-size: 1rem;
-  line-height: 1.5;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
   font-style: normal;
 }
 
@@ -26,31 +102,31 @@ h5 {
 }
 
 button {
-  background-color: var(--nord10);
-  color: var(--nord6);
+  background-color: var(--color-accent-element);
+  color: var(--color-text-bright);
   border: none;
-  padding: 0.5rem;
-  padding-inline: 1rem;
-  border-radius: 4px;
-  font-size: 1rem;
+  padding: var(--spacing-small-rem);
+  padding-inline: var(--spacing-medium-rem);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-body);
   will-change: transform;
   transition:
-    transform 250ms,
-    opacity 250ms;
+    transform var(--animation-time),
+    opacity var(--animation-time);
 }
 
 button:hover {
-  transform: scale(1.05);
+  transform: scale(var(--button-scale-up));
   cursor: pointer;
 }
 
 button:active {
-  transform: scale(0.95);
-  opacity: 0.9;
+  transform: scale(var(--button-scale-down));
+  opacity: var(--button-active-opacity);
 }
 
 button:focus-visible {
-  transform: scale(1.05);
-  outline: 2px solid var(--nord7);
-  outline-offset: 4px;
+  transform: scale(var(--button-scale-up));
+  outline: var(--focus-outline);
+  outline-offset: var(--outline-offset);
 }

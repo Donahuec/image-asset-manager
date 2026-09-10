@@ -25,13 +25,7 @@
     padding: 0;
     position: relative;
     isolation: isolate;
-    --shadow-color: 0deg 0% 0%;
-
-    box-shadow:
-      0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.13),
-      1.1px 2.1px 2.8px -0.7px hsl(var(--shadow-color) / 0.15),
-      2.6px 5.3px 7.1px -1.3px hsl(var(--shadow-color) / 0.16),
-      6.3px 12.5px 16.8px -2px hsl(var(--shadow-color) / 0.18);
+    box-shadow: var(--box-shadow-medium);
   }
 
   .image-button-figure::before {
@@ -41,11 +35,7 @@
     height: 100%;
     display: block;
     position: absolute;
-    background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.9) 0%,
-      rgba(0, 0, 0, 0) 60%
-    );
+    background: var(--text-backdrop-gradient);
   }
 
   .image-button-figure {
@@ -56,12 +46,12 @@
     margin: 0;
     z-index: 0;
     will-change: transform;
-    transition: transform 250ms;
+    transition: transform var(--animation-time);
   }
 
   .image-button-caption {
     position: absolute;
-    bottom: 1rem;
+    bottom: var(--spacing-medium-rem);
     left: 0;
     right: 0;
     text-align: center;
@@ -70,25 +60,22 @@
   }
 
   .hasNoData {
-    outline: 2px solid var(--nord11);
+    outline: var(--focus-outline);
+    outline-color: var(--color-warning);
     .image-button-figure::before {
-      background: linear-gradient(
-          0deg,
-          rgba(0, 0, 0, 0.9) 0%,
-          rgba(0, 0, 0, 0) 60%
-        ),
-        linear-gradient(127deg, var(--nord11), transparent 30%);
+      background: var(--text-backdrop-gradient),
+        linear-gradient(127deg, var(--color-warning), transparent 30%);
     }
   }
 
   .image-button:hover:not(:active) {
     .image-button-figure {
-      transform: scale(1.05);
+      transform: scale(var(--button-scale-up));
     }
   }
 
   .image-button:active {
-    transform: scale(0.95);
+    transform: scale(var(--button-scale-down));
   }
 
   .img {
@@ -96,7 +83,7 @@
     display: block;
     width: 100%;
     height: 100%;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
     image-orientation: from-image;
   }
 </style>

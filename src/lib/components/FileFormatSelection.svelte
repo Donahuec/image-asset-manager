@@ -23,33 +23,33 @@
   .format-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 32px;
+    gap: var(--spacing-large-rem);
   }
-  /* Customize the label (the container) */
+
   .checkbox-label {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: var(--spacing-small-rem);
     position: relative;
     cursor: pointer;
-    font-size: 1.125rem;
+    font-size: var(--font-size-body);
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    border-radius: 4px;
+    border-radius: var(--border-radius);
   }
 
   .checkbox-label:has(input:focus-visible) {
-    outline: 2px solid var(--nord8);
-    outline-offset: 4px;
+    outline: var(--focus-outline);
+    outline-offset: var(--outline-offset);
   }
 
   /* Hide the browser's default checkbox */
   .checkbox-label input {
     position: absolute;
-    opacity: 0;
     cursor: pointer;
+    opacity: 0;
     height: 0;
     width: 0;
   }
@@ -62,24 +62,24 @@
     display: grid;
     place-items: center;
     place-content: center;
-    border-radius: 4px;
-    transition: background-color 250ms;
-    border: 1px solid var(--nord3);
+    border-radius: var(--border-radius);
+    transition: background-color var(--animation-time);
+    border: var(--form-border);
   }
 
   /* When the checkbox is checked, add a blue background */
   .checkbox-label input:checked ~ .checkmark {
-    background-color: var(--nord10);
-    border-color: var(--nord9);
+    background-color: var(--color-accent-element);
+    border-color: var(--color-light-accent);
   }
 
   /* On mouse-over, add a grey background color */
   .checkbox-label:hover input ~ .checkmark {
-    background-color: var(--nord8);
+    background-color: var(--color-light-accent);
   }
 
   .checkbox-label:active input ~ .checkmark {
-    background-color: var(--nord9);
+    background-color: var(--color-accent-element);
   }
 
   /* Create the checkmark/indicator (hidden when not checked) */
@@ -100,10 +100,8 @@
     left: 1px;
     width: 0.25em;
     height: 0.5em;
-    border: solid var(--color-text);
+    border: solid var(--color-text-bright);
     border-width: 0 3px 3px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
     transform: translateY(50%) translatex(70%) rotate(45deg);
   }
 </style>

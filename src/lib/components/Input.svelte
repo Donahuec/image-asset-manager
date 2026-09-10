@@ -20,19 +20,24 @@
     grid-column: span 2;
     text-align: right;
   }
+
+  label {
+    font-weight: var(--font-weight-bold);
+  }
+
   input,
   textarea {
     color: var(--color-text);
     background-color: var(--color-surface);
-    border: 1px solid var(--nord3);
-    padding: 0.5rem;
-    line-height: 1.5;
-    border-radius: 4px;
-    font-family: Roboto, sans-serif;
-    font-size: 1rem;
+    border: var(--form-border);
+    padding: var(--spacing-small-rem);
+    line-height: var(--line-height-body);
+    border-radius: var(--border-radius);
+    font-family: var(--font-family-body);
+    font-size: var(--font-size-body);
 
     &:focus-visible {
-      outline: 2px solid var(--nord8);
+      outline: var(--focus-outline);
     }
   }
 </style>
